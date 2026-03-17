@@ -46,7 +46,7 @@ ON CONFLICT (user_id) DO NOTHING;
 INSERT INTO telemetry_raw (user_id, ts, usage_mins, events)
 SELECT 
     u.user_id,
-    (CURRENT_DATE - (n || ' days')::integer)::timestamp,
+    (CURRENT_DATE - n * interval '1 day')::timestamp,
     (20 + random() * 100)::integer,
     (5 + random() * 30)::integer
 FROM (SELECT unnest(ARRAY['user1','user2','prothetic1','prothetic2','prothetic3']) AS user_id) u,
