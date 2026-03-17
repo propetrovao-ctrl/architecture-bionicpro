@@ -14,10 +14,10 @@ from psycopg2.extras import RealDictCursor
 app = FastAPI(title="Reports API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "http://localhost:3001"],
     allow_credentials=True,
-    allow_methods=["GET", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 security = HTTPBearer(auto_error=False)
 

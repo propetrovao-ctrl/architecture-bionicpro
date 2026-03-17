@@ -10,7 +10,11 @@ const keycloakConfig: KeycloakConfig = {
 };
 
 const keycloak = new Keycloak(keycloakConfig);
-const initOptions = { pkceMethod: 'S256' as const };
+const initOptions = {
+  onLoad: 'check-sso' as const,
+  pkceMethod: 'S256' as const,
+  checkLoginIframe: false,
+};
 
 const App: React.FC = () => {
   return (
